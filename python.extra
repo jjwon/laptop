@@ -1,0 +1,24 @@
+#!/bin/sh
+
+pip_is_installed() {
+  pip freeze --local | grep -Fqx "$1"
+}
+
+pip_install_or_upgrade () {
+  if ! pip_is_installed "$1"; then
+    fancy_echo "Installing %s" "$1"
+    pip install "$@"
+  else
+    fancy_echo "Upgrading %s (if possible)" "$1"
+    pip install -U "$@"
+  fi
+}
+
+brew_install_or_upgrade pip
+pip_install_or_upgrade numpy
+pip_install_or_upgrade scipy
+pip_install_or_upgrade scikit-learn
+pip_install_or_upgrade ipython
+pip_install_or_upgrade matplotlib
+pip_install_or_upgrade virtualenv
+pip_install_or_upgrade virtualenvwrapper

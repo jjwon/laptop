@@ -130,6 +130,7 @@ fi
 
 fancy_echo "Updating Homebrew formulas ..."
 brew update
+brew upgrade
 
 brew_install_or_upgrade 'git'
 brew_install_or_upgrade 'postgres'
@@ -177,11 +178,5 @@ fancy_echo "Configuring Bundler ..."
 
 brew_install_or_upgrade 'heroku-toolbelt'
 
-if ! command -v rcup >/dev/null; then
-  brew_tap 'thoughtbot/formulae'
-  brew_install_or_upgrade 'rcm'
-fi
-
-if [ -f "$HOME/.laptop.local" ]; then
-  . "$HOME/.laptop.local"
-fi
+# add extra install scripts as .extra
+find . -name \*.extra | while read installer ; do sh -c "${installer}" ; done
