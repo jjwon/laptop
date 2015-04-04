@@ -117,3 +117,9 @@ can be used in your extra scripts.
 
 See the [wiki](https://github.com/thoughtbot/laptop/wiki)
 for more customization examples.
+
+Remaining stuff to do after installation
+----------------------------------------
+
+- Install iTerm2 themes
+- Set up [dotfiles](https://github.com/jjwon/dotfiles)
