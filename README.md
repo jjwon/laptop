@@ -7,6 +7,8 @@ It can be run multiple times on the same machine safely.
 It installs, upgrades, or skips packages
 based on what is already installed on the machine.
 
+Modified based on the original script by [thoughtbot](https://github.com/thoughtbot/laptop), with significant additions based on [holman's dotfiles](https://github.com/holman/dotfiles) and [mathiasbynens's dotfiles](https://github.com/mathiasbynens/dotfiles).
+
 Requirements
 ------------
 
@@ -21,11 +23,11 @@ versions are welcome.
 Install
 -------
 
-Download, review, then execute the script:
+Clone the repo, and then run `mac`
 
 ```sh
-curl --remote-name https://raw.githubusercontent.com/thoughtbot/laptop/master/mac
-less mac
+git clone git@github.com:jjwon/laptop.git
+cd laptop
 sh mac 2>&1 | tee ~/laptop.log
 ```
 
@@ -82,11 +84,11 @@ What it sets up
 
 It should take less than 15 minutes to install (depends on your machine).
 
-Customize in `~/.laptop.local`
+Customize with `.extra`
 ------------------------------
 
-Your `~/.laptop.local` is run at the end of the Laptop script.
-Put your customizations there.
+Any extra scripts that need to be run can be put in the same folder with a `.extra` extension.  See `brew.extra` or `python.extra` for examples.
+
 For example:
 
 ```sh
@@ -111,49 +113,7 @@ See the `mac` script for examples.
 Laptop functions such as `fancy_echo`,
 `brew_install_or_upgrade`, and
 `gem_install_or_update`
-can be used in your `~/.laptop.local`.
+can be used in your extra scripts.
 
 See the [wiki](https://github.com/thoughtbot/laptop/wiki)
 for more customization examples.
-
-Contributing
-------------
-
-Edit the `mac` file.
-Document in the `README.md` file.
-Follow shell style guidelines by using [ShellCheck] and [Syntastic].
-
-```sh
-brew install shellcheck
-```
-
-[ShellCheck]: http://www.shellcheck.net/about.html
-[Syntastic]: https://github.com/scrooloose/syntastic
-
-Thank you, [contributors]!
-
-[contributors]: https://github.com/thoughtbot/laptop/graphs/contributors
-
-License
--------
-
-Laptop is © 2011-2015 thoughtbot, inc.
-It is free software,
-and may be redistributed under the terms specified in the [LICENSE] file.
-
-[LICENSE]: LICENSE
-
-About thoughtbot
-----------------
-
-![thoughtbot](https://thoughtbot.com/logo.png)
-
-Laptop is maintained and funded by thoughtbot, inc.
-The names and logos for thoughtbot are trademarks of thoughtbot, inc.
-
-We are passionate about open source software.
-See [our other projects][community].
-We are [available for hire][hire].
-
-[community]: https://thoughtbot.com/community?utm_source=github
-[hire]: https://thoughtbot.com?utm_source=github
