@@ -14,7 +14,7 @@ pip_install_or_upgrade () {
   fi
 }
 
-brew_install_or_upgrade pip
+brew_install_or_upgrade python
 pip_install_or_upgrade numpy
 pip_install_or_upgrade scipy
 pip_install_or_upgrade scikit-learn

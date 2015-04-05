@@ -29,6 +29,7 @@ brew_install_or_upgrade 'p7zip'
 brew_install_or_upgrade 'pandoc'
 brew_install_or_upgrade 'fasd'
 brew_install_or_upgrade 'zsh-syntax-highlighting'
+brew_install_or_upgrade 'zsh-completions'
 
 # Install some more recent versions of some OS X tools
 brew_install_or_upgrade vim --override-system-vi

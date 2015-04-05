@@ -123,3 +123,10 @@ Remaining stuff to do after installation
 
 - Install iTerm2 themes
 - Set up [dotfiles](https://github.com/jjwon/dotfiles)
+- Install Flash Player
+- Install Opera extensions
+  - [Add Chrome Extensions to Opera](https://addons.opera.com/en-gb/extensions/details/download-chrome-extension-9/)
+  - [Adblock Plus](https://addons.opera.com/en/extensions/details/opera-adblock/?display=es-ES)
+  - [Vimium](https://chrome.google.com/webstore/detail/vimium/dbepggeogbaibhgnhhndojpepiihcmeb?hl=en)
+  - [Facebook News Eradicator](https://chrome.google.com/webstore/detail/news-feed-eradicator-for/fjcldmjmjhkklehbacihaiopjklihlgg?hl=en)
+  - Install MATLAB
