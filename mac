@@ -128,6 +128,7 @@ brew upgrade
 brew_install_or_upgrade 'git'
 brew_install_or_upgrade 'rbenv'
 brew_install_or_upgrade 'ruby-build'
+brew_install_or_upgrade 'node'
 
 ruby_version="$(curl -sSL http://ruby.thoughtbot.com/latest)"
 
