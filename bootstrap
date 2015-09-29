@@ -146,7 +146,7 @@ case "$SHELL" in
 esac
 
 ###############################################################################
-# Homebrew                                                                    #
+# Install Homebrew                                                            #
 ###############################################################################
 
 if ! command -v brew >/dev/null; then
@@ -167,8 +167,12 @@ fi
 fancy_echo "Updating Homebrew formulas ..."
 brew update
 brew upgrade
-
 brew_install_or_upgrade 'git'
+
+###############################################################################
+# Ruby                                                                        #
+###############################################################################
+
 brew_install_or_upgrade 'rbenv'
 brew_install_or_upgrade 'ruby-build'
 
@@ -189,38 +193,40 @@ fancy_echo "Configuring Bundler ..."
   number_of_cores=$(sysctl -n hw.ncpu)
   bundle config --global jobs $((number_of_cores - 1))
 
+###############################################################################
+# Install Homebrew Packages                                                   #
+###############################################################################
+
 brew_tap 'caskroom/cask'
 brew_tap 'homebrew/dupes'
 
+# Terminal powerups
+brew_install_or_upgrade 'zsh'
+brew_install_or_upgrade 'zsh-syntax-highlighting'
+brew_install_or_upgrade 'zsh-completions'
+brew_install_or_upgrade 'fasd'
+brew_install_or_upgrade 'grc'
+brew_install_or_upgrade 'vim'
+brew_install_or_upgrade 'tmux'
+brew_install_or_upgrade 'coreutils'
+brew_install_or_upgrade 'the_silver_searcher'
+brew_install_or_upgrade 'p7zip'
+brew_install_or_upgrade 'unrar'
+brew_install_or_upgrade 'pandoc'
+brew_install_or_upgrade 'trash'
+
+# Common tools for development
 brew_install_or_upgrade 'heroku-toolbelt'
 brew_install_or_upgrade 'postgres'
 brew_launchctl_restart 'postgresql'
 brew_install_or_upgrade 'redis'
 brew_launchctl_restart 'redis'
-brew_install_or_upgrade 'the_silver_searcher'
-brew_install_or_upgrade 'vim'
-brew_install_or_upgrade 'ctags'
-brew_install_or_upgrade 'tmux'
-brew_install_or_upgrade 'reattach-to-user-namespace'
+
+# Random shit
 brew_install_or_upgrade 'imagemagick'
-brew_install_or_upgrade 'qt'
-brew_install_or_upgrade 'hub'
-brew_install_or_upgrade 'node'
-brew_install_or_upgrade 'grc'
-brew_install_or_upgrade 'coreutils'
-brew_install_or_upgrade 'p7zip'
-brew_install_or_upgrade 'unrar'
-brew_install_or_upgrade 'pandoc'
-brew_install_or_upgrade 'fasd'
-brew_install_or_upgrade 'burl'
-brew_install_or_upgrade 'zsh'
-brew_install_or_upgrade 'zsh-syntax-highlighting'
-brew_install_or_upgrade 'zsh-completions'
-brew_install_or_upgrade 'trash'
 brew_install_or_upgrade 'openssl'
 brew unlink openssl && brew link openssl --force
 brew_install_or_upgrade 'libyaml'
-brew_install_or_upgrade 'python'
 
 # Install some more recent versions of some OS X tools
 brew_install_or_upgrade vim --override-system-vi
@@ -240,14 +246,12 @@ brew_cask_install_or_upgrade 'vlc'
 # Python                                                                      #
 ###############################################################################
 
-brew_install_or_upgrade python
-pip_install_or_upgrade numpy
-pip_install_or_upgrade scipy
-pip_install_or_upgrade scikit-learn
-pip_install_or_upgrade ipython
-pip_install_or_upgrade matplotlib
-pip_install_or_upgrade virtualenv
-pip_install_or_upgrade virtualenvwrapper
+brew_install_or_upgrade 'python'
+brew_install_or_upgrade 'python3'
+pip_install_or_upgrade 'numpy'
+pip_install_or_upgrade 'scipy'
+pip_install_or_upgrade 'virtualenv'
+pip_install_or_upgrade 'virtualenvwrapper'
 
 ###############################################################################
 # npm                                                                         #
@@ -256,6 +260,7 @@ pip_install_or_upgrade virtualenvwrapper
 brew_install_or_upgrade 'node'
 npm_install_or_ugprade 'bower'
 npm_install_or_ugprade 'gulp'
+npm_install_or_ugprade 'grunt'
 
 # Run the osx script
 sh -c "osx"
