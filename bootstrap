@@ -75,6 +75,29 @@ brew_expand_alias() {
   brew info "$1" 2>/dev/null | head -1 | awk '{gsub(/:/, ""); print $1}'
 }
 
+brew_cask_expand_alias() {
+  brew cask info "$1" 2>/dev/null | head -1 | awk '{gsub(/:/, ""); print $1}'
+}
+
+brew_cask_is_installed() {
+  local NAME=$(brew_cask_expand_alias "$1")
+  brew cask list -1 | grep -Fqx "$NAME"
+}
+
+brew_cask_install() {
+  if ! brew_cask_is_installed "$1"; then
+    brew cask install "$@"
+  fi
+}
+
+brew_cask_install_or_upgrade() {
+  if brew_cask_is_installed "$1"; then
+    echo "$1 is already installed, brew cask upgrade is not yet implemented"
+  else
+    brew cask install "$@"
+  fi
+}
+
 brew_launchctl_restart() {
   local name="$(brew_expand_alias "$1")"
   local domain="homebrew.mxcl.$name"
@@ -258,9 +281,9 @@ pip_install_or_upgrade 'virtualenvwrapper'
 ###############################################################################
 
 brew_install_or_upgrade 'node'
-npm_install_or_ugprade 'bower'
-npm_install_or_ugprade 'gulp'
-npm_install_or_ugprade 'grunt'
+npm_install_or_upgrade 'bower'
+npm_install_or_upgrade 'gulp'
+npm_install_or_upgrade 'grunt'
 
 # Run the osx script
-sh -c "osx"
+sh -c './osx'
